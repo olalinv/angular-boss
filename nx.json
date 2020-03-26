@@ -36,6 +36,16 @@
     },
     "shared-ui": {
       "tags": []
+    },
+    "external-currency": {
+      "tags": []
+    },
+    "external-currency-e2e": {
+      "tags": [],
+      "implicitDependencies": ["external-currency"]
+    },
+    "currency": {
+      "tags": []
     }
   }
 }
