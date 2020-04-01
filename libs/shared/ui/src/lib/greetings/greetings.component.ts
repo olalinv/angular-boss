@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'ab-ui-greetings',
   template: `
-    <p>
+    <h1>
       {{ greeting.message }}
-    </p>
+    </h1>
   `,
   styles: []
 })
