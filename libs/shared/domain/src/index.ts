@@ -1,1 +1,3 @@
-export * from './lib/shared-domain';
+export * from './lib/models/greetings.interface';
+export * from './lib/models/product.interface';
+
