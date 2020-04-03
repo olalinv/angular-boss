@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   public title = 'shop';
   public basketUnits = 0;
   public basket = [];
-
   constructor(
     private basketService: BasketService,
     private cdr: ChangeDetectorRef
@@ -35,7 +34,6 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
   public getNumItems() {
     console.count('get NUM_ITEMS calls');
     return this.basket.length;

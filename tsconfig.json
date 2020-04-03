@@ -18,7 +18,8 @@
     "paths": {
       "@angular-boss/shared/domain": ["libs/shared/domain/src/index.ts"],
       "@angular-boss/shared/ui": ["libs/shared/ui/src/index.ts"],
-      "@angular-boss/currency": ["libs/currency/src/index.ts"]
+      "@angular-boss/currency": ["libs/currency/src/index.ts"],
+      "@angular-boss/products": ["libs/products/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

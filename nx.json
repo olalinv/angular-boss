@@ -46,6 +46,9 @@
     },
     "currency": {
       "tags": []
+    },
+    "products": {
+      "tags": []
     }
   }
 }
