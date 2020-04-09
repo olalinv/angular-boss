@@ -4,6 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule, RouterState, routerReducer } from '@ngrx/router-store';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,12 +24,29 @@ import { HttpClientModule } from '@angular/common/http';
           path: 'catalog',
           loadChildren: () =>
             import('./catalog/catalog.module').then(m => m.CatalogModule)
-        }
+        },
+      { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) },
+      { path: 'rates', loadChildren: () => import('./rates/rates.module').then(m => m.RatesModule) }
       ],
       { initialNavigation: 'enabled' }
     ),
     HttpClientModule,
-    UiModule
+    UiModule,
+    StoreModule.forRoot(
+      {
+        router: routerReducer
+      },
+      {
+        metaReducers: !environment.production ? [] : [],
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true
+        }
+      }
+    ),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule.forRoot({ routerState: RouterState.Minimal })
   ],
   providers: [],
   bootstrap: [AppComponent]

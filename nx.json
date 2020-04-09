@@ -49,6 +49,9 @@
     },
     "products": {
       "tags": []
+    },
+    "rx-store": {
+      "tags": []
     }
   }
 }
