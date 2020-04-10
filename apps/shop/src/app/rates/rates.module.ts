@@ -5,9 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { RatesRoutingModule } from './rates-routing.module';
 import { RatesComponent } from './rates.component';
 import { StoreModule } from '@ngrx/store';
+import * as fromExchangeRate from './store/exchange-rate/exchange-rate.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ExchangeRateEffects } from './store/exchange-rate/exchange-rate.effects';
-import * as fromExchangeRate from './store/exchange-rate/exchange-rate.reducer';
 
 const routes: Routes = [
   { path: '', component: RatesComponent }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as ExchangeRateActions from './store/exchange-rate/exchange-rate.actions';
-import { ExchangeState, exchangeRateFeatureKey } from './store/exchange-rate/exchange-rate.reducer';
-
+import {
+  exchangeRateFeatureKey,
+  ExchangeState
+} from './store/exchange-rate/exchange-rate.reducer';
 @Component({
   selector: 'ab-shop-rates',
   templateUrl: './rates.component.html',
@@ -10,8 +12,9 @@ import { ExchangeState, exchangeRateFeatureKey } from './store/exchange-rate/exc
 })
 export class RatesComponent implements OnInit {
   public rates$ = this.store.select(exchangeRateFeatureKey, 'rates');
+  // public rates$ = this.store.select('rates');
 
-  constructor(private store: Store<ExchangeState>) { }
+  constructor(private store: Store<ExchangeState>) {}
 
   ngOnInit() {
     this.store.dispatch(ExchangeRateActions.loadExchangeRates());
