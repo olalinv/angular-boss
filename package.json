@@ -36,7 +36,10 @@
     "dev:ssr": "ng run shop:serve-ssr",
     "serve:ssr": "node dist/shop-server/main.js",
     "build:ssr": "ng build --prod && ng run shop:server:production",
-    "prerender": "ng run shop:prerender"
+    "prerender": "ng run shop:prerender",
+    "i18n:warehouse": "ng xi18n warehouse --output-path src/locale",
+    "build:warehouse-es": "ng build warehouse --configuration=production-es",
+    "start:warehouse-es": "npm run build:warehouse-es && angular-http-server --open -p 8082 --path ./dist/apps/warehouse/es"
   },
   "private": true,
   "dependencies": {
