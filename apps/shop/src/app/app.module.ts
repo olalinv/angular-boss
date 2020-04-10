@@ -13,24 +13,19 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(
-      [
-        {
-          path: 'cart',
-          loadChildren: () =>
-            import('./cart/cart.module').then(m => m.CartModule)
-        },
-        {
-          path: 'catalog',
-          loadChildren: () =>
-            import('./catalog/catalog.module').then(m => m.CatalogModule)
-        },
-      { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) },
-      { path: 'rates', loadChildren: () => import('./rates/rates.module').then(m => m.RatesModule) }
-      ],
-      { initialNavigation: 'enabled' }
-    ),
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    RouterModule.forRoot([
+    {
+        path: 'cart',
+        loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
+    },
+    {
+        path: 'catalog',
+        loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
+    },
+    { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) },
+    { path: 'rates', loadChildren: () => import('./rates/rates.module').then(m => m.RatesModule) }
+], { initialNavigation: 'enabled' }),
     HttpClientModule,
     UiModule,
     StoreModule.forRoot(

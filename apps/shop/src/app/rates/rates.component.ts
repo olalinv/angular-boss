@@ -11,8 +11,8 @@ import {
   styleUrls: ['./rates.component.css']
 })
 export class RatesComponent implements OnInit {
-  public rates$ = this.store.select(exchangeRateFeatureKey, 'rates');
-  // public rates$ = this.store.select('rates');
+  // public rates$ = this.store.select(exchangeRateFeatureKey, 'rates');
+  public rates$ = this.store.select('rates');
 
   constructor(private store: Store<ExchangeState>) {}
 

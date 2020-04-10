@@ -93,6 +93,55 @@
             "passWithNoTests": true,
             "setupFile": "apps/shop/src/test-setup.ts"
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/shop-server",
+            "main": "apps/shop/server.ts",
+            "tsConfig": "apps/shop/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/shop/src/environments/environment.ts",
+                  "with": "apps/shop/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "shop:build",
+            "serverTarget": "shop:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "shop:build:production",
+              "serverTarget": "shop:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "shop:build:production",
+            "serverTarget": "shop:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
     },
